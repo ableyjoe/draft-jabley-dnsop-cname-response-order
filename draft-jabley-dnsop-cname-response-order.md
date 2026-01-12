@@ -114,7 +114,7 @@ labelled 3 (a) of the recursive algorithm, as follows:
 
 Some implementations behave as though the direction "copy all RRs
 which match QTYPE into the answer section" implies a required or
-expected ordering, in ths sense that resource records added first
+expected ordering, in the sense that resource records added first
 should be at the beginning of the section and subsequent RRs should
 be appended (see {{impact}} for an example). However, the various
 sections of a DNS message are not defined in the specification as
@@ -129,6 +129,20 @@ is described in section 3.7 as follows:
 > [...]
 >
 > Answer          Carries RRs which directly answer the query.
+
+The confusion on CNAME ordering stems from section 4.3.1, which describes recursive responses as follows:
+
+> If recursive service is requested and available, the recursive
+> response to a query will be one of the following:
+>     - The answer to the query, possibly preface by one or more
+>     CNAME RRs that specify aliases encountered on the way to an
+>     answer.
+
+While the word "preface" suggests that CNAME RRs should precede other
+records, this language is descriptive rather than normative,
+lacking the explicit requirement keywords defined in {{!RFC2119}}.  This
+ambiguity has led to varying interpretations among implementers and
+contributed to interoperability issues as described in Section 4.
 
 This document aims to resolve this ambiguity with a clear specification
 for the ordering of RRSets in the answer section of a DNS message
@@ -162,13 +176,13 @@ MUST interpret any direction to "copy RRs into the answer section"
 to mean that the RRs concerned should be appended to any existing
 records that have already been accumulated in an earlier step of
 the algorithm. The ordering of individual RRs within the set of RRs
-being appended to the answer section in any step is not specified.
+being appended to the answer section in any step is not significant.
 
 In the case where one or more CNAME RRs are processed in order to
 construct a DNS response, the answer section MUST include a CNAME
 RRSet whose owner name matches the QNAME in the query first, and
 subsequent RRSets whose owner name matches the preceding CNAME
-RDATA, in order.
+RDATA, in-order.
 
 # Security Considerations
 
