@@ -236,11 +236,6 @@ upgraded at all).
 
 See {{Neuteboom2026}} for additional information.
 
-# Acknowledgments
-{:numbered="false"}
-
-Your name here, etc.
-
 # Editorial Notes (remove before publication)
 
 ## Open Questions
@@ -257,3 +252,8 @@ construction should always be an append operation. Which is better?
 ### draft-jabley-dnsop-cname-response-order-00
 
 Initial draft circulated for comment.
+
+# Acknowledgments
+{:numbered="false"}
+
+Your name here, etc.
