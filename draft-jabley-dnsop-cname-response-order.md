@@ -139,7 +139,8 @@ is described in section 3.7 as follows:
 >
 > Answer          Carries RRs which directly answer the query.
 
-The confusion on CNAME ordering stems from section 4.3.1, which describes recursive responses as follows:
+The confusion on CNAME ordering stems from section 4.3.1, which describes
+recursive responses as follows:
 
 > If recursive service is requested and available, the recursive
 > response to a query will be one of the following:
@@ -215,9 +216,9 @@ The CNAME records MUST NOT appear out of order in their chain:
 >     www.example.com.    CNAME cdn.example.com.
 >     origin.example.com. A     192.0.2.1
 
-Client implementations MUST accept responses where CNAME RRSets
-appear in any order, but server implementations MUST NOT rely
-on this capability when generating responses.
+Client implementations SHOULD accept responses where CNAME RRSets appear
+in any order, but server implementations MUST NOT rely on this capability
+when generating responses.
 
 # Security Considerations
 
