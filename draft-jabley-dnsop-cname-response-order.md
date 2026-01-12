@@ -184,7 +184,7 @@ This document has no IANA actions.
 
 --- back
 
-# Events of 8 January 2026 {#impact}
+# Events of 8 January 2026 {#cloudflare}
 
 Cloudflare operates a well-known public DNS resolver known as
 1.1.1.1, after one of the IPv4 addresses associated with the service.
