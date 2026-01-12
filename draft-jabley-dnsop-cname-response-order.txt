@@ -89,6 +89,10 @@ Table of Contents
      8.1.  Normative References
      8.2.  Informative References
    Appendix A.  Events of 8 January 2026
+   Appendix B.  Editorial Notes (remove before publication)
+     B.1.  Open Questions
+     B.2.  Change History
+       B.2.1.  draft-jabley-dnsop-cname-response-order-00
    Acknowledgments
    Authors' Addresses
 
@@ -294,6 +298,24 @@ Appendix A.  Events of 8 January 2026
    upgraded at all).
 
    See [Neuteboom2026] for additional information.
+
+Appendix B.  Editorial Notes (remove before publication)
+
+B.1.  Open Questions
+
+   1.  This document only concerns itself with the ordering of RRSets in
+       the answer section for reasons of CNAME processing.  There is an
+       argument that the clarification should be more general, in other
+       words that all sections in a DNS message should be treated as
+       ordered lists, and that adding RRSets to a section for any reason
+       while a message is under construction should always be an append
+       operation.  Which is better?
+
+B.2.  Change History
+
+B.2.1.  draft-jabley-dnsop-cname-response-order-00
+
+   Initial draft circulated for comment.
 
 Acknowledgments
 
