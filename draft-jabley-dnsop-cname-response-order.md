@@ -44,7 +44,7 @@ informative:
        name: Sebastiaan Neuteboom
        org: Cloudflare
    date: 2026
-   target: http://blog.cloudflare.com/what-came-first-the-cname-or-the-a-record/
+   target: https://blog.cloudflare.com/cname-a-record-order-dns-standards/
 
 
 --- abstract
