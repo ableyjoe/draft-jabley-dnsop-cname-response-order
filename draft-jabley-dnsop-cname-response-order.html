@@ -1408,7 +1408,7 @@ origin.example.com. A     192.0.2.1
 </li>
       </ul>
 <p id="section-5-5">The answer section <span class="bcp14">MUST</span> be ordered the same.<a href="#section-5-5" class="pilcrow">¶</a></p>
-<p id="section-5-6">CNAME records <span class="bcp14">MUST NOT</span> appear after the records they alias to:<a href="#section-5-6" class="pilcrow">¶</a></p>
+<p id="section-5-6">The CNAME records <span class="bcp14">MUST NOT</span> appear after the records they alias to:<a href="#section-5-6" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-5-7.1">
           <div class="alignLeft art-text artwork" id="section-5-7.1.1">
@@ -1420,7 +1420,7 @@ cdn.example.com.    CNAME origin.example.com.
 </div>
 </li>
       </ul>
-<p id="section-5-8">CNAME records <span class="bcp14">MUST NOT</span> appear out of order in their chain:<a href="#section-5-8" class="pilcrow">¶</a></p>
+<p id="section-5-8">The CNAME records <span class="bcp14">MUST NOT</span> appear out of order in their chain:<a href="#section-5-8" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-5-9.1">
           <div class="alignLeft art-text artwork" id="section-5-9.1.1">
@@ -1432,6 +1432,9 @@ origin.example.com. A     192.0.2.1
 </div>
 </li>
       </ul>
+<p id="section-5-10">Client implementations <span class="bcp14">MUST</span> accept responses where CNAME RRSets
+appear in any order, but server implementations <span class="bcp14">MUST NOT</span> rely
+on this capability when generating responses.<a href="#section-5-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
