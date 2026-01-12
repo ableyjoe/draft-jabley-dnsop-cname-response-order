@@ -253,7 +253,7 @@ Table of Contents
       www.example.com.    CNAME cdn.example.com.
       origin.example.com. A     192.0.2.1
 
-   Client implementations MUST accept responses where CNAME RRSets
+   Client implementations SHOULD accept responses where CNAME RRSets
    appear in any order, but server implementations MUST NOT rely on this
    capability when generating responses.
 
