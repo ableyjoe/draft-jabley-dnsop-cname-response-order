@@ -134,6 +134,7 @@ The confusion on CNAME ordering stems from section 4.3.1, which describes recurs
 
 > If recursive service is requested and available, the recursive
 > response to a query will be one of the following:
+>
 >     - The answer to the query, possibly preface by one or more
 >     CNAME RRs that specify aliases encountered on the way to an
 >     answer.
