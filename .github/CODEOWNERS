@@ -1,0 +1,3 @@
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-jabley-dnsop-cname-response-order.md jabley@cloudflare.com sebastiaan@cloudflare.com
