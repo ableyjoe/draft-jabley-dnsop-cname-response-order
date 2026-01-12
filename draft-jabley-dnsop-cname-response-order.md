@@ -192,7 +192,7 @@ In the case where one or more CNAME RRs are processed in order to
 construct a DNS response, the answer section MUST include a CNAME
 RRSet whose owner name matches the QNAME in the query first, and
 subsequent RRSets whose owner name matches the preceding CNAME
-RDATA, in-order.
+RDATA, in order.
 
 For example, consider a query for www.example.com with QTYPE A where
 the following CNAME chain exists:
