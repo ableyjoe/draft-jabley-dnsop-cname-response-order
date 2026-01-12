@@ -176,9 +176,11 @@ Table of Contents
    describes recursive responses as follows:
 
       If recursive service is requested and available, the recursive
-      response to a query will be one of the following: - The answer to
-      the query, possibly preface by one or more CNAME RRs that specify
-      aliases encountered on the way to an answer.
+      response to a query will be one of the following:
+
+      - The answer to the query, possibly preface by one or more
+      CNAME RRs that specify aliases encountered on the way to an
+      answer.
 
    While the word "preface" suggests that CNAME RRs should precede other
    records, this language is descriptive rather than normative, lacking
