@@ -36,6 +36,15 @@ author:
 normative:
 
 informative:
+ Neuteboom2026:
+   title: "What Came First? The CNAME or the A Record?"
+   author:
+     -
+       ins: S. Neuteboom
+       name: Sebastiaan Neuteboom
+       org: Cloudflare
+   date: 2026
+   target: http://blog.cloudflare.com/what-came-first-the-cname-or-the-a-record/
 
 
 --- abstract
@@ -224,6 +233,8 @@ because of the widespread use of the 1.1.1.1 resolver. However, the
 two examples of client implementations are also widely deployed in
 systems that may well be upgraded only infrequently (or never
 upgraded at all).
+
+See {{Neuteboom2026}} for additional information.
 
 # Acknowledgments
 {:numbered="false"}
