@@ -1299,7 +1299,7 @@ labelled 3 (a) of the recursive algorithm, as follows:<a href="#section-3-3" cla
       </ul>
 <p id="section-3-5">Some implementations behave as though the direction "copy all RRs
 which match QTYPE into the answer section" implies a required or
-expected ordering, in ths sense that resource records added first
+expected ordering, in the sense that resource records added first
 should be at the beginning of the section and subsequent RRs should
 be appended (see <a href="#impact" class="auto internal xref">Section 4</a> for an example). However, the various
 sections of a DNS message are not defined in the specification as
@@ -1315,9 +1315,24 @@ RRs.<a href="#section-3-6.1.1" class="pilcrow">¶</a></p>
 <p id="section-3-6.1.3">Answer          Carries RRs which directly answer the query.<a href="#section-3-6.1.3" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-3-7">This document aims to resolve this ambiguity with a clear specification
+<p id="section-3-7">The confusion on CNAME ordering stems from section 4.3.1, which describes recursive responses as follows:<a href="#section-3-7" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3-8.1">
+          <p id="section-3-8.1.1">If recursive service is requested and available, the recursive
+response to a query will be one of the following:
+    - The answer to the query, possibly preface by one or more
+    CNAME RRs that specify aliases encountered on the way to an
+    answer.<a href="#section-3-8.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-3-9">While the word "preface" suggests that CNAME RRs should precede other
+records, this language is descriptive rather than normative,
+lacking the explicit requirement keywords defined in <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>.  This
+ambiguity has led to varying interpretations among implementers and
+contributed to interoperability issues as described in Section 4.<a href="#section-3-9" class="pilcrow">¶</a></p>
+<p id="section-3-10">This document aims to resolve this ambiguity with a clear specification
 for the ordering of RRSets in the answer section of a DNS message
-for CNAME responses (see <a href="#updates" class="auto internal xref">Section 5</a>).<a href="#section-3-7" class="pilcrow">¶</a></p>
+for CNAME responses (see <a href="#updates" class="auto internal xref">Section 5</a>).<a href="#section-3-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="impact">
@@ -1353,12 +1368,12 @@ that promotes the greatest operational stability as described in
 to mean that the RRs concerned should be appended to any existing
 records that have already been accumulated in an earlier step of
 the algorithm. The ordering of individual RRs within the set of RRs
-being appended to the answer section in any step is not specified.<a href="#section-5-1" class="pilcrow">¶</a></p>
+being appended to the answer section in any step is not significant.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">In the case where one or more CNAME RRs are processed in order to
 construct a DNS response, the answer section <span class="bcp14">MUST</span> include a CNAME
 RRSet whose owner name matches the QNAME in the query first, and
 subsequent RRSets whose owner name matches the preceding CNAME
-RDATA, in order.<a href="#section-5-2" class="pilcrow">¶</a></p>
+RDATA, in-order.<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
