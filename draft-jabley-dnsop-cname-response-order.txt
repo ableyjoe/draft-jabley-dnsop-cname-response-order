@@ -232,6 +232,27 @@ Table of Contents
    subsequent RRSets whose owner name matches the preceding CNAME RDATA,
    in-order.
 
+   For example, consider a query for www.example.com with QTYPE A where
+   the following CNAME chain exists:
+
+      www.example.com.    CNAME cdn.example.com.
+      cdn.example.com.    CNAME origin.example.com.
+      origin.example.com. A     192.0.2.1
+
+   The answer section MUST be ordered the same.
+
+   CNAME records MUST NOT appear after the records they alias to:
+
+      origin.example.com. A     192.0.2.1
+      www.example.com.    CNAME cdn.example.com.
+      cdn.example.com.    CNAME origin.example.com.
+
+   CNAME records MUST NOT appear out of order in their chain:
+
+      cdn.example.com.    CNAME origin.example.com.
+      www.example.com.    CNAME cdn.example.com.
+      origin.example.com. A     192.0.2.1
+
 6.  Security Considerations
 
    The ambiguity described in Section 3 is known to have led to

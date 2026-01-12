@@ -1394,6 +1394,44 @@ construct a DNS response, the answer section <span class="bcp14">MUST</span> inc
 RRSet whose owner name matches the QNAME in the query first, and
 subsequent RRSets whose owner name matches the preceding CNAME
 RDATA, in-order.<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-3">For example, consider a query for www.example.com with QTYPE A where
+the following CNAME chain exists:<a href="#section-5-3" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-5-4.1">
+          <div class="alignLeft art-text artwork" id="section-5-4.1.1">
+<pre>
+www.example.com.    CNAME cdn.example.com.
+cdn.example.com.    CNAME origin.example.com.
+origin.example.com. A     192.0.2.1
+</pre><a href="#section-5-4.1.1" class="pilcrow">¶</a>
+</div>
+</li>
+      </ul>
+<p id="section-5-5">The answer section <span class="bcp14">MUST</span> be ordered the same.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-6">CNAME records <span class="bcp14">MUST NOT</span> appear after the records they alias to:<a href="#section-5-6" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-5-7.1">
+          <div class="alignLeft art-text artwork" id="section-5-7.1.1">
+<pre>
+origin.example.com. A     192.0.2.1
+www.example.com.    CNAME cdn.example.com.
+cdn.example.com.    CNAME origin.example.com.
+</pre><a href="#section-5-7.1.1" class="pilcrow">¶</a>
+</div>
+</li>
+      </ul>
+<p id="section-5-8">CNAME records <span class="bcp14">MUST NOT</span> appear out of order in their chain:<a href="#section-5-8" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-5-9.1">
+          <div class="alignLeft art-text artwork" id="section-5-9.1.1">
+<pre>
+cdn.example.com.    CNAME origin.example.com.
+www.example.com.    CNAME cdn.example.com.
+origin.example.com. A     192.0.2.1
+</pre><a href="#section-5-9.1.1" class="pilcrow">¶</a>
+</div>
+</li>
+      </ul>
 </section>
 </div>
 <div id="security-considerations">
