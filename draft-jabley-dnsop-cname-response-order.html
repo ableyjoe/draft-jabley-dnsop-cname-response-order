@@ -4,16 +4,26 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>TODO - Your title</title>
-<meta content="Your Name Here" name="author">
+<title>Clarification of Requirements for the Ordering of RRSets in CNAME Responses in the DNS</title>
+<meta content="Joe Abley" name="author">
+<meta content="Sebastiaan Neuteboom" name="author">
 <meta content="
-       TODO Abstract 
+       In the DNS, recursive resolvers receive queries and formulate
+corresponding  responses by reference to data obtained from
+authoritative servers. In the case where the query name (QNAME) and
+class (QCLASS) in the query matches an owner name in the DNS where
+a canonical name (CNAME) resource record is published, the response
+includes both the CNAME record and the resource record set corresponding
+to the request's query type (QTYPE) published at the CNAME target.
+The ordering of these two different RRSets has not previously been
+clearly specified, but operational experience based on real-world
+client implementations confirms that the order is important. This
+document updates the specification accordingly. 
     " name="description">
 <meta content="xml2rfc 3.31.0" name="generator">
-<meta content="next generation" name="keyword">
-<meta content="unicorn" name="keyword">
-<meta content="sparkling distributed ledger" name="keyword">
-<meta content="draft-todo-yourname-protocol-latest" name="ietf.draft">
+<meta content="dns" name="keyword">
+<meta content="cname" name="keyword">
+<meta content="draft-jabley-dnsop-cname-response-order-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.31.0
     Python 3.12.12
@@ -28,7 +38,7 @@
     requests 2.32.5
     wcwidth 0.2.14
 -->
-<link href="draft-todo-yourname-protocol.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-jabley-dnsop-cname-response-order.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1044,11 +1054,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">TODO - Abbreviation</td>
+<td class="center">CNAME Response Order</td>
 <td class="right">January 2026</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Here</td>
+<td class="left">Abley &amp; Neuteboom</td>
 <td class="center">Expires 16 July 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1057,30 +1067,47 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">WG Working Group</dd>
+<dd class="workgroup">Domain Name System Operations</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-todo-yourname-protocol-latest</dd>
+<dd class="internet-draft">draft-jabley-dnsop-cname-response-order-latest</dd>
+<dt class="label-updates">Updates:</dt>
+<dd class="updates">
+<a href="https://www.rfc-editor.org/rfc/rfc1034" class="eref">1034</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2026-01-12" class="published">12 January 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
-<dd class="intended-status">Informational</dd>
+<dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2026-07-16">16 July 2026</time></dd>
-<dt class="label-authors">Author:</dt>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">Y. N. Here</div>
-<div class="org">Your Organization Here</div>
+      <div class="author-name">J. Abley</div>
+<div class="org">Cloudflare</div>
+</div>
+<div class="author">
+      <div class="author-name">S. Neuteboom</div>
+<div class="org">Cloudflare</div>
 </div>
 </dd>
 </dl>
 </div>
-<h1 id="title">TODO - Your title</h1>
+<h1 id="title">Clarification of Requirements for the Ordering of RRSets in CNAME Responses in the DNS</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">In the DNS, recursive resolvers receive queries and formulate
+corresponding  responses by reference to data obtained from
+authoritative servers. In the case where the query name (QNAME) and
+class (QCLASS) in the query matches an owner name in the DNS where
+a canonical name (CNAME) resource record is published, the response
+includes both the CNAME record and the resource record set corresponding
+to the request's query type (QTYPE) published at the CNAME target.
+The ordering of these two different RRSets has not previously been
+clearly specified, but operational experience based on real-world
+client implementations confirms that the order is important. This
+document updates the specification accordingly.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1088,14 +1115,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/">https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://ableyjoe.github.io/draft-jabley-dnsop-cname-response-order/draft-jabley-dnsop-cname-response-order.html">https://ableyjoe.github.io/draft-jabley-dnsop-cname-response-order/draft-jabley-dnsop-cname-response-order.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-jabley-dnsop-cname-response-order/">https://datatracker.ietf.org/doc/draft-jabley-dnsop-cname-response-order/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+        Domain Name System Operations Working Group mailing list (<span><a href="mailto:dnsop@ietf.org">mailto:dnsop@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/dnsop/">https://mailarchive.ietf.org/arch/browse/dnsop/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/dnsop/">https://www.ietf.org/mailman/listinfo/dnsop/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        <span><a href="https://github.com/ableyjoe/draft-jabley-dnsop-cname-response-order">https://github.com/ableyjoe/draft-jabley-dnsop-cname-response-order</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1152,19 +1180,39 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-ambiguity-in-the-dns-specif" class="internal xref">Ambiguity in the DNS Specification</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-consequences-of-ambiguity" class="internal xref">Consequences of Ambiguity</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-updates-to-rfc-1034" class="internal xref">Updates to RFC 1034</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-events-of-8-january-2026" class="internal xref">Events of 8 January 2026</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1175,7 +1223,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">The DNS specification includes some ambiguity around the processing
+of queries that require the processing of CNAME resource records,
+as discussed in <a href="#ambiguity" class="auto internal xref">Section 3</a>. Different assumptions about the way
+that corresponding DNS responses are constructed are known to have
+caused widespread negative impact, as described in <a href="#impact" class="auto internal xref">Section 4</a>. This
+document updates the DNS specification to resolve the ambiguity.
+The clarification to the specification can be found in <a href="#updates" class="auto internal xref">Section 5</a>.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1187,60 +1241,241 @@ svg :is([fill="white"], [fill^="#fff"]) {
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">This document assumes familiarity with the terminology of the Domain
+Name System as described in <span>[<a href="#RFC9499" class="cite xref">RFC9499</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ambiguity">
+<section id="section-3">
+      <h2 id="name-ambiguity-in-the-dns-specif">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-ambiguity-in-the-dns-specif" class="section-name selfRef">Ambiguity in the DNS Specification</a>
+      </h2>
+<p id="section-3-1"><span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span> introduces the CNAME RRType to be one that "identifies
+the canonical name of an alias". The implementation of the CNAME
+resource record is further described in section 3.6 as follows:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3-2.1">
+          <p id="section-3-2.1.1">CNAME RRs cause special action in DNS software.  When a name server
+fails to find a desired RR in the resource set associated with the
+domain name, it checks to see if the resource set consists of a CNAME
+record with a matching class.  If so, the name server includes the CNAME
+record in the response and restarts the query at the domain name
+specified in the data field of the CNAME record.  The one exception to
+this rule is that queries which match the CNAME type are not restarted.<a href="#section-3-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-3-2.1.2">For example, suppose a name server was processing a query with for USC-
+ISIC.ARPA, asking for type A information, and had the following resource
+records:<a href="#section-3-2.1.2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3-2.1.3">
+<pre>
+USC-ISIC.ARPA   IN      CNAME   C.ISI.EDU
+
+C.ISI.EDU       IN      A       10.0.0.52
+</pre><a href="#section-3-2.1.3" class="pilcrow">¶</a>
+</div>
+<p id="section-3-2.1.4">Both of these RRs would be returned in the response to the type A query,
+while a type CNAME or * query should return just the CNAME.<a href="#section-3-2.1.4" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-3-3">The required processing of requests that require CNAME processing
+is further described in section 4.3.2, in particular in the step
+labelled 3 (a) of the recursive algorithm, as follows:<a href="#section-3-3" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3-4.1">
+          <div class="alignLeft art-text artwork" id="section-3-4.1.1">
+<pre>
+     a. If the whole of QNAME is matched, we have found the
+        node.
+
+        If the data at the node is a CNAME, and QTYPE doesn't
+        match CNAME, copy the CNAME RR into the answer section
+        of the response, change QNAME to the canonical name in
+        the CNAME RR, and go back to step 1.
+
+        Otherwise, copy all RRs which match QTYPE into the
+        answer section and go to step 6.
+</pre><a href="#section-3-4.1.1" class="pilcrow">¶</a>
+</div>
+</li>
+      </ul>
+<p id="section-3-5">Some implementations behave as though the direction "copy all RRs
+which match QTYPE into the answer section" implies a required or
+expected ordering, in ths sense that resource records added first
+should be at the beginning of the section and subsequent RRs should
+be appended (see <a href="#impact" class="auto internal xref">Section 4</a> for an example). However, the various
+sections of a DNS message are not defined in the specification as
+being ordered lists. For example, the "answer section of the response"
+is described in section 3.7 as follows:<a href="#section-3-5" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3-6.1">
+          <p id="section-3-6.1.1">DNS queries and responses are carried in a standard message format.  The
+message format has a header containing a number of fixed fields which
+are always present, and four sections which carry query parameters and
+RRs.<a href="#section-3-6.1.1" class="pilcrow">¶</a></p>
+<p id="section-3-6.1.2">[...]<a href="#section-3-6.1.2" class="pilcrow">¶</a></p>
+<p id="section-3-6.1.3">Answer          Carries RRs which directly answer the query.<a href="#section-3-6.1.3" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-3-7">This document aims to resolve this ambiguity with a clear specification
+for the ordering of RRSets in the answer section of a DNS message
+for CNAME responses (see <a href="#updates" class="auto internal xref">Section 5</a>).<a href="#section-3-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="impact">
+<section id="section-4">
+      <h2 id="name-consequences-of-ambiguity">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-consequences-of-ambiguity" class="section-name selfRef">Consequences of Ambiguity</a>
+      </h2>
+<p id="section-4-1">A recursive server performing CNAME preocessing without interpreting
+the direction in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span> that "copy" means "append" might
+reasonably generate response messages with arbitrary ordering of
+RRSets within the answer section.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">A client of a recursive server that interprets the direction in
+<span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span> the other way, that "copy" does indeed mean "append",
+might potentially react badly to receiving a response where the
+answer section has been constructed differently. A real-world example
+of such a consequence is described in <a href="#cloudflare" class="auto internal xref">Appendix A</a>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">Since it is known that at least some widely-deployed clients of
+resolver servers expect the "copy" direction in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span> to be
+interpreted as "append", and react badly when they receive responses
+that do not meet this expectation, this document updates the DNS
+standard to choose and require the interpretation of <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>
+that promotes the greatest operational stability as described in
+<a href="#updates" class="auto internal xref">Section 5</a>.<a href="#section-4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="updates">
+<section id="section-5">
+      <h2 id="name-updates-to-rfc-1034">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-updates-to-rfc-1034" class="section-name selfRef">Updates to RFC 1034</a>
+      </h2>
+<p id="section-5-1">A DNS implementation following the algorithm described in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>
+        <span class="bcp14">MUST</span> interpret any direction to "copy RRs into the answer section"
+to mean that the RRs concerned should be appended to any existing
+records that have already been accumulated in an earlier step of
+the algorithm. The ordering of individual RRs within the set of RRs
+being appended to the answer section in any step is not specified.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">In the case where one or more CNAME RRs are processed in order to
+construct a DNS response, the answer section <span class="bcp14">MUST</span> include a CNAME
+RRSet whose owner name matches the QNAME in the query first, and
+subsequent RRSets whose owner name matches the preceding CNAME
+RDATA, in order.<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-3">
+<section id="section-6">
       <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">The ambiguity described in <a href="#ambiguity" class="auto internal xref">Section 3</a> is known to have led to
+widespread instability in at least one case, as described in
+<a href="#impact" class="auto internal xref">Section 4</a>. The clarification provided by this document does not
+present additional security concerns for the DNS.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-4">
+<section id="section-7">
       <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">This document has no IANA actions.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-normative-references">
-<section id="section-5">
-      <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<div id="sec-combined-references">
+<section id="section-8">
+      <h2 id="name-references">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
+<section id="section-8.1">
+        <h3 id="name-normative-references">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
 <dl class="references">
+<dt id="RFC1034">[RFC1034]</dt>
+        <dd>
+<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1034">https://www.rfc-editor.org/rfc/rfc1034</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
 </div>
-<div id="acknowledgments">
+<div id="sec-informative-references">
+<section id="section-8.2">
+        <h3 id="name-informative-references">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC9499">[RFC9499]</dt>
+      <dd>
+<span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 9499</span>, <span class="seriesInfo">DOI 10.17487/RFC9499</span>, <time datetime="2024-03" class="refDate">March 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9499">https://www.rfc-editor.org/rfc/rfc9499</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
+</div>
+<div id="cloudflare">
 <section id="appendix-A">
+      <h2 id="name-events-of-8-january-2026">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-events-of-8-january-2026" class="section-name selfRef">Events of 8 January 2026</a>
+      </h2>
+<p id="appendix-A-1">Cloudflare operates a well-known public DNS resolver known as
+1.1.1.1, after one of the IPv4 addresses associated with the service.
+On 8 January a software change in the 1.1.1.1 service had the
+unintential side-effect of changing the order in which RRSets were
+encoded in the answer section of DNS responses, in the case where
+constructing the responses involved CNAME processing. The previous
+ordering was as described in <a href="#updates" class="auto internal xref">Section 5</a>. The change in behaviour
+was not detected by a corresponding failure in a regression test,
+since the ordering in the answer section was not considered to be
+significant.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Following the software release, Cloudflare became aware of significant
+numbers of deployed DNS client implementations that were suffering
+from failure. In particular, the getanswer_r() function invoked by
+the getaddrinfo() function in glibc was found to fail to function,
+and some deployed ethernet switches were observed to reboot when
+trying to resolve the names of configured NTP servers.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">The impact associated with this event was particularly widespread
+because of the widespread use of the 1.1.1.1 resolver. However, the
+two examples of client implementations are also widely deployed in
+systems that may well be upgraded only infrequently (or never
+upgraded at all).<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-B">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">Your name here, etc.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+<section id="appendix-C">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Your Name Here</span></div>
-<div dir="auto" class="left"><span class="org">Your Organization Here</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Joe Abley</span></div>
+<div dir="auto" class="left"><span class="org">Cloudflare</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:your.email@example.com" class="email">your.email@example.com</a>
+<a href="mailto:jabley@cloudflare.com" class="email">jabley@cloudflare.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Sebastiaan Neuteboom</span></div>
+<div dir="auto" class="left"><span class="org">Cloudflare</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:sebastiaan@cloudflare.com" class="email">sebastiaan@cloudflare.com</a>
 </div>
 </address>
 </section>
