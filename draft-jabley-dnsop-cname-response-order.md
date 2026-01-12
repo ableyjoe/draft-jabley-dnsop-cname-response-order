@@ -1,5 +1,5 @@
 ---
-title: "Clarification of Requirements for the Ordering of RRsets in CNAME Responses in the DNS"
+title: "Clarification of Requirements for the Ordering of RRSets in CNAME Responses in the DNS"
 abbrev: "CNAME Response Order"
 category: std
 updates: 1034
@@ -47,7 +47,7 @@ class (QCLASS) in the query matches an owner name in the DNS where
 a canonical name (CNAME) resource record is published, the response
 includes both the CNAME record and the resource record set corresponding
 to the request's query type (QTYPE) published at the CNAME target.
-The ordering of these two different RRsets has not previously been
+The ordering of these two different RRSets has not previously been
 clearly specified, but operational experience based on real-world
 client implementations confirms that the order is important. This
 document updates the specification accordingly.
@@ -86,9 +86,9 @@ resource record is further described in section 3.6 as follows:
 > specified in the data field of the CNAME record.  The one exception to
 > this rule is that queries which match the CNAME type are not restarted.
 >
-> For example, suppose a name server was processing a query with for
-> USC-ISIC.ARPA, asking for type A information, and had the following
-> resource records:
+> For example, suppose a name server was processing a query with for USC-
+> ISIC.ARPA, asking for type A information, and had the following resource
+> records:
 >
 >     USC-ISIC.ARPA   IN      CNAME   C.ISI.EDU
 >
@@ -145,7 +145,7 @@ ambiguity has led to varying interpretations among implementers and
 contributed to interoperability issues as described in Section 4.
 
 This document aims to resolve this ambiguity with a clear specification
-for the ordering of RRsets in the answer section of a DNS message
+for the ordering of RRSets in the answer section of a DNS message
 for CNAME responses (see {{updates}}).
 
 # Consequences of Ambiguity {#impact}
@@ -153,7 +153,7 @@ for CNAME responses (see {{updates}}).
 A recursive server performing CNAME preocessing without interpreting
 the direction in {{!RFC1034}} that "copy" means "append" might
 reasonably generate response messages with arbitrary ordering of
-RRsets within the answer section.
+RRSets within the answer section.
 
 A client of a recursive server that interprets the direction in
 {{!RFC1034}} the other way, that "copy" does indeed mean "append",
@@ -180,8 +180,8 @@ being appended to the answer section in any step is not significant.
 
 In the case where one or more CNAME RRs are processed in order to
 construct a DNS response, the answer section MUST include a CNAME
-RRset whose owner name matches the QNAME in the query first, and
-subsequent RRsets whose owner name matches the preceding CNAME
+RRSet whose owner name matches the QNAME in the query first, and
+subsequent RRSets whose owner name matches the preceding CNAME
 RDATA, in-order.
 
 # Security Considerations
@@ -203,7 +203,7 @@ This document has no IANA actions.
 Cloudflare operates a well-known public DNS resolver known as
 1.1.1.1, after one of the IPv4 addresses associated with the service.
 On 8 January a software change in the 1.1.1.1 service had the
-unintential side-effect of changing the order in which RRsets were
+unintential side-effect of changing the order in which RRSets were
 encoded in the answer section of DNS responses, in the case where
 constructing the responses involved CNAME processing. The previous
 ordering was as described in {{updates}}. The change in behaviour
