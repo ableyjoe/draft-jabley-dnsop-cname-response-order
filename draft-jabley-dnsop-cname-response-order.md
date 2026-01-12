@@ -184,11 +184,6 @@ This document has no IANA actions.
 
 --- back
 
-# Acknowledgments
-{:numbered="false"}
-
-Your name here, etc.
-
 # Events of 8 January 2026 {#impact}
 
 Cloudflare operates a well-known public DNS resolver known as
@@ -214,3 +209,9 @@ because of the widespread use of the 1.1.1.1 resolver. However, the
 two examples of client implementations are also widely deployed in
 systems that may well be upgraded only infrequently (or never
 upgraded at all).
+
+# Acknowledgments
+{:numbered="false"}
+
+Your name here, etc.
+
