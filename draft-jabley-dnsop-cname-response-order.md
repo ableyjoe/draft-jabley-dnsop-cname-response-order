@@ -203,17 +203,21 @@ the following CNAME chain exists:
 
 The answer section MUST be ordered the same.
 
-CNAME records MUST NOT appear after the records they alias to:
+The CNAME records MUST NOT appear after the records they alias to:
 
 >     origin.example.com. A     192.0.2.1
 >     www.example.com.    CNAME cdn.example.com.
 >     cdn.example.com.    CNAME origin.example.com.
 
-CNAME records MUST NOT appear out of order in their chain:
+The CNAME records MUST NOT appear out of order in their chain:
 
 >     cdn.example.com.    CNAME origin.example.com.
 >     www.example.com.    CNAME cdn.example.com.
 >     origin.example.com. A     192.0.2.1
+
+Client implementations MUST accept responses where CNAME RRSets
+appear in any order, but server implementations MUST NOT rely
+on this capability when generating responses.
 
 # Security Considerations
 
