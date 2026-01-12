@@ -37,13 +37,13 @@ normative:
 
 informative:
  Neuteboom2026:
-   title: "What Came First? The CNAME or the A Record?"
+   title: "What came first: the CNAME or the A record?"
    author:
      -
        ins: S. Neuteboom
        name: Sebastiaan Neuteboom
        org: Cloudflare
-   date: 2026
+   date: 2026-01
    target: https://blog.cloudflare.com/cname-a-record-order-dns-standards/
 
 
