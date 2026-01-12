@@ -289,8 +289,8 @@ Table of Contents
 
    [Neuteboom2026]
               Neuteboom, S., "What Came First? The CNAME or the A
-              Record?", 2026, <http://blog.cloudflare.com/what-came-
-              first-the-cname-or-the-a-record/>.
+              Record?", 2026, <https://blog.cloudflare.com/cname-a-
+              record-order-dns-standards/>.
 
    [RFC9499]  Hoffman, P. and K. Fujiwara, "DNS Terminology", BCP 219,
               RFC 9499, DOI 10.17487/RFC9499, March 2024,
