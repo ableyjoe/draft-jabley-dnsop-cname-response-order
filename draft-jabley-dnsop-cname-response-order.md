@@ -241,3 +241,19 @@ See {{Neuteboom2026}} for additional information.
 
 Your name here, etc.
 
+# Editorial Notes (remove before publication)
+
+## Open Questions
+
+1. This document only concerns itself with the ordering of RRSets in the
+answer section for reasons of CNAME processing. There is an argument
+that the clarification should be more general, in other words that all
+sections in a DNS message should be treated as ordered lists, and that
+adding RRSets to a section for any reason while a message is under
+construction should always be an append operation. Which is better?
+
+## Change History
+
+### draft-jabley-dnsop-cname-response-order-00
+
+Initial draft circulated for comment.
