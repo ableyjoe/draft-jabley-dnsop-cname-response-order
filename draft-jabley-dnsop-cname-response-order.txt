@@ -258,6 +258,11 @@ Table of Contents
 
 8.2.  Informative References
 
+   [Neuteboom2026]
+              Neuteboom, S., "What Came First? The CNAME or the A
+              Record?", 2026, <http://blog.cloudflare.com/what-came-
+              first-the-cname-or-the-a-record/>.
+
    [RFC9499]  Hoffman, P. and K. Fujiwara, "DNS Terminology", BCP 219,
               RFC 9499, DOI 10.17487/RFC9499, March 2024,
               <https://www.rfc-editor.org/rfc/rfc9499>.
@@ -287,6 +292,8 @@ Appendix A.  Events of 8 January 2026
    two examples of client implementations are also widely deployed in
    systems that may well be upgraded only infrequently (or never
    upgraded at all).
+
+   See [Neuteboom2026] for additional information.
 
 Acknowledgments
 
