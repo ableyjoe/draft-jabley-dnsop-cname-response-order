@@ -1,0 +1,111 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2026-01-13T01:16:45.135560+00:00",
+  "repo": "ableyjoe/draft-jabley-dnsop-cname-response-order",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOQ4PGNc68stHX",
+      "title": "Fix typos and clarify RRset ordering in CNAME responses",
+      "url": "https://github.com/ableyjoe/draft-jabley-dnsop-cname-response-order/pull/1",
+      "state": "MERGED",
+      "author": "SebastiaanYN",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-01-12T13:16:19Z",
+      "updatedAt": "2026-01-12T13:48:47Z",
+      "baseRepository": "ableyjoe/draft-jabley-dnsop-cname-response-order",
+      "baseRefName": "main",
+      "baseRefOid": "a2c53fce3cf4134318fbd4f49501de8e45000498",
+      "headRepository": "SebastiaanYN/draft-jabley-dnsop-cname-response-order",
+      "headRefName": "patch-1",
+      "headRefOid": "88cc056157af29727ec0b09d34b61d1661e5ac2e",
+      "closedAt": "2026-01-12T13:48:47Z",
+      "mergedAt": "2026-01-12T13:48:46Z",
+      "mergedBy": "ableyjoe",
+      "mergeCommit": {
+        "oid": "730f85f2698d81eddeef250e8616ccb3544e6eae"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOQ4PGNc68tvaM",
+      "title": "Clarify CNAME response order with examples",
+      "url": "https://github.com/ableyjoe/draft-jabley-dnsop-cname-response-order/pull/2",
+      "state": "MERGED",
+      "author": "SebastiaanYN",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-01-12T14:35:03Z",
+      "updatedAt": "2026-01-12T15:31:54Z",
+      "baseRepository": "ableyjoe/draft-jabley-dnsop-cname-response-order",
+      "baseRefName": "main",
+      "baseRefOid": "b075ef2ddf3702f4f2e5d51527e328c58bfefe54",
+      "headRepository": "ableyjoe/draft-jabley-dnsop-cname-response-order",
+      "headRefName": "SebastiaanYN-patch-1",
+      "headRefOid": "db128bfd7e0d74673565323f095fde76a0369758",
+      "closedAt": "2026-01-12T15:31:54Z",
+      "mergedAt": "2026-01-12T15:31:54Z",
+      "mergedBy": "ableyjoe",
+      "mergeCommit": {
+        "oid": "5242d7f8921ba8a6d498c5e33a299c9e5fee2f06"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
