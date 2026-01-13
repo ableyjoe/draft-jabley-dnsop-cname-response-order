@@ -269,9 +269,21 @@ See {{Neuteboom2026}} for additional information.
 1. This document only concerns itself with the ordering of RRSets in the
 answer section for reasons of CNAME processing. There is an argument
 that the clarification should be more general, in other words that all
-sections in a DNS message should be treated as ordered lists, and that
-adding RRSets to a section for any reason while a message is under
-construction should always be an append operation. Which is better?
+sections in a DNS message should explicitly be treated as either ordered
+or unordered lists, and that adding RRSets to a section for any reason
+while a message is under construction should always be an append operation.
+
+{{!RFC4035}}, for example, provides unambiguous guidance to implementers
+about record inclusion in DNSSEC contexts, as mentioned in section 3.1.1:
+
+> When placing a signed RRset in the Answer section, the name server
+> MUST also place its RRSIG RRs in the Answer section.  The RRSIG
+> RRs have a higher priority for inclusion than any other RRsets
+> that may have to be included.  If space does not permit inclusion
+> of these RRSIG RRs, the name server MUST set the TC bit.
+
+However, it does not mandate any particular behavior around record ordering,
+leaving it up to the interpretation of the implementer.
 
 ## Change History
 
