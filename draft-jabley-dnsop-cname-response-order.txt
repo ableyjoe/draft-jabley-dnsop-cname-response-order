@@ -5,8 +5,8 @@
 Domain Name System Operations                                   J. Abley
 Internet-Draft                                              S. Neuteboom
 Updates: 1034 (if approved)                                   Cloudflare
-Intended status: Standards Track                         12 January 2026
-Expires: 16 July 2026
+Intended status: Standards Track                         14 January 2026
+Expires: 18 July 2026
 
 
    Clarification of Requirements for the Ordering of RRSets in CNAME
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 July 2026.
+   This Internet-Draft will expire on 18 July 2026.
 
 Copyright Notice
 
@@ -287,9 +287,16 @@ Table of Contents
 
 8.2.  Informative References
 
+   [Cisco2026]
+              Cisco, "Cisco Business Switches Reboot with Fatal Error
+              from DNSC Process", 8 January 2026,
+              <https://www.cisco.com/c/en/us/support/docs/smb/switches/
+              Catalyst-switches/kmgmt3846-cbs-reboot-with-fatal-error-
+              from-dnsc-process.html>.
+
    [Neuteboom2026]
               Neuteboom, S., "What came first: the CNAME or the A
-              record?", January 2026, <https://blog.cloudflare.com/
+              record?", 15 January 2026, <https://blog.cloudflare.com/
               cname-a-record-order-dns-standards/>.
 
    [RFC9499]  Hoffman, P. and K. Fujiwara, "DNS Terminology", BCP 219,
@@ -314,7 +321,8 @@ Appendix A.  Events of 8 January 2026
    suffering from failure.  In particular, the getanswer_r() function
    invoked by the getaddrinfo() function in glibc was found to fail to
    function, and some deployed ethernet switches were observed to reboot
-   when trying to resolve the names of configured NTP servers.
+   when trying to resolve the names of configured NTP servers
+   [Cisco2026].
 
    The impact associated with this event was particularly widespread
    because of the widespread use of the 1.1.1.1 resolver.  However, the
