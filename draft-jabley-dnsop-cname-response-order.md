@@ -43,9 +43,17 @@ informative:
        ins: S. Neuteboom
        name: Sebastiaan Neuteboom
        org: Cloudflare
-   date: 2026-01
+   date: 2026-01-15
    target: https://blog.cloudflare.com/cname-a-record-order-dns-standards/
 
+ Cisco2026:
+   title: "Cisco Business Switches Reboot with Fatal Error from DNSC Process"
+   author:
+     - org: Cisco
+   date: 2026-01-08
+   target: https://www.cisco.com/c/en/us/support/docs/smb/switches/Catalyst-switches/kmgmt3846-cbs-reboot-with-fatal-error-from-dnsc-process.html
+   seriesInfo:
+     "Cisco Document ID": "1767916364268164"
 
 --- abstract
 
@@ -252,7 +260,7 @@ numbers of deployed DNS client implementations that were suffering
 from failure. In particular, the getanswer_r() function invoked by
 the getaddrinfo() function in glibc was found to fail to function,
 and some deployed ethernet switches were observed to reboot when
-trying to resolve the names of configured NTP servers.
+trying to resolve the names of configured NTP servers {{Cisco2026}}.
 
 The impact associated with this event was particularly widespread
 because of the widespread use of the 1.1.1.1 resolver. However, the
