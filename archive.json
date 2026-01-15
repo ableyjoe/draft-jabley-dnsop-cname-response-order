@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-13T01:16:45.135560+00:00",
+  "timestamp": "2026-01-15T01:18:32.063065+00:00",
   "repo": "ableyjoe/draft-jabley-dnsop-cname-response-order",
   "labels": [
     {
@@ -104,6 +104,32 @@
       "mergeCommit": {
         "oid": "5242d7f8921ba8a6d498c5e33a299c9e5fee2f06"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOQ4PGNc688iFZ",
+      "title": "Expand on the open questions",
+      "url": "https://github.com/ableyjoe/draft-jabley-dnsop-cname-response-order/pull/3",
+      "state": "CLOSED",
+      "author": "SebastiaanYN",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-01-13T14:33:59Z",
+      "updatedAt": "2026-01-13T15:37:15Z",
+      "baseRepository": "ableyjoe/draft-jabley-dnsop-cname-response-order",
+      "baseRefName": "main",
+      "baseRefOid": "3d7f77667a0c9ee8a60eccdaf1665743fef8fb3b",
+      "headRepository": "ableyjoe/draft-jabley-dnsop-cname-response-order",
+      "headRefName": "SebastiaanYN-patch-2",
+      "headRefOid": "f72dbda8cc4b11dcd229f426987f026d1ccd2b5d",
+      "closedAt": "2026-01-13T15:37:15Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
